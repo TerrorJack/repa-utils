@@ -17,7 +17,6 @@ library
   exposed-modules:     Data.Array.Repa.Shape.Int
   build-depends:       base, repa
   default-language:    Haskell2010
-  ghc-options:         -Wall -fno-warn-orphans
 
 source-repository head
   type:     git
