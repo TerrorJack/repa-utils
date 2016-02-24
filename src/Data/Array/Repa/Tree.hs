@@ -27,3 +27,8 @@ computeS Node {..} = Node label $ Repa.computeS $ Repa.map computeS children
 computeP :: (Repa.Load r1 sh (Tree r1 sh a), Repa.Target r2 (Tree r2 sh a), Repa.Source r2 (Tree r2 sh a), Monad m) => Tree r1 sh a -> m (Tree r2 sh a)
 {-# INLINE computeP #-}
 computeP Node {..} = Node label <$> Repa.computeP (Repa.map computeS children)
+
+-- | Map a function to all elements in a tree, yielding a delayed tree.
+map :: (Repa.Shape sh, Repa.Source r (Tree r sh a)) => (a -> b) -> Tree r sh a -> Tree Repa.D sh b
+{-# INLINE map #-}
+map f Node {..} = Node (f label) $ Repa.map (Data.Array.Repa.Tree.map f) children
