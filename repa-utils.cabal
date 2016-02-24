@@ -15,6 +15,8 @@ cabal-version:       >=1.22
 library
   hs-source-dirs:      src
   exposed-modules:     Data.Array.Repa.Shape.Int
+                       Data.Array.Repa.Operators.Filtering
+                       Data.Array.Repa.Tree
   build-depends:       base, repa
   default-language:    Haskell2010
 
