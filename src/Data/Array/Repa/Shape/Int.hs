@@ -1,3 +1,7 @@
+{-|
+    Orphan instance of 'Int' for 'Shape' class. Make 1-D 'Array's easier to use.
+-}
+
 module Data.Array.Repa.Shape.Int where
 
 import Data.Array.Repa.Shape

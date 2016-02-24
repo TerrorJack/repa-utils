@@ -1,8 +1,16 @@
-{-# LANGUAGE FlexibleContexts, GADTs #-}
+{-|
+    A multi-way tree (rose tree) as a nested 'Array'.
+-}
 
 module Data.Array.Repa.Tree where
 
-import Data.Array.Repa
+import Data.Array.Repa as Repa
 
-data Tree r sh a where
-    Node :: (Source r (Tree r sh a), Shape sh) => a -> Array r sh (Tree r sh a) -> Tree r sh a
+-- | A non-empty tree, with a label and an 'Array' of children.
+data Tree r sh a = Node {
+    label :: a,
+    children :: Forest r sh a
+}
+
+-- | A possibly-empty 'Array' of trees.
+type Forest r sh a = Array r sh (Tree r sh a)
